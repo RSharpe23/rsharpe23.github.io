@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AnimFx</title>
+  <link rel="stylesheet" href="dist/anim-fx.css">
+
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .col {
+      flex-grow: 1;
+      background-color: #eee;
+      border: 1px solid #bbc;
+      font-size: 5rem;
+      text-align: center;
+      line-height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="screen1" class="container">
+    <div class="col anim-fx">1</div>
+  </div>
+
+  <div id="screen2" class="container">
+    <div class="col anim-fx anim-to-right">1</div>
+    <div class="col anim-fx anim-to-left">2</div>
+  </div>
+
+  <div id="screen3" class="container">
+    <div class="col anim-fx anim-to-up">1</div>
+    <div class="col anim-fx anim-to-up">2</div>
+    <div class="col anim-fx anim-to-up">3</div>
+  </div>
+
+  <script src="vendors/jquery.min.js"></script>
+  <script src="vendors/jquery.scrollpoint.min.js"></script>
+  <script src="dist/jquery.anim-fx.js"></script>
+
+  <script>
+    $('#screen1').scrollpoint({
+      once: true,
+
+      enter() {
+        $(this).find('.anim-fx')
+          .animFx();
+      },
+    });
+
+    $('#screen2').scrollpoint({
+      once: true,
+      offset: '50%',
+
+      enter() {
+        const $anims = $(this).find('.anim-fx');
+
+        $($anims[0]).animFx().__promise__
+          .then(() => {
+            $($anims[1]).animFx()
+              .css('background-color', '#0ee');
+          });
+      },
+    });
+
+    $('#screen3').scrollpoint({
+      once: true,
+      offset: '50%',
+
+      enter() {
+        const $anims = $(this).find('.anim-fx');
+
+        $($anims[0]).animFx().__promise__
+          .then(() => $($anims[1]).animFx().__promise__)
+          .then(() => $($anims[2]).animFx());
+      },
+    });
+
+    // HACK: To invoke the enter event immediately if a scrollpoint is inside the viewport
+    $(window).on('load', e => $(e.currentTarget).trigger('resize'));
+  </script>
+</body>
+
+</html>

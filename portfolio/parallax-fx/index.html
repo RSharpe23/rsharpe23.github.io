@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ParallaxFx</title>
+
+	<style>
+		/*
+    .screen {
+      height: 125vh;
+      background-color: #ddd;
+      border: 1px solid #333;
+      text-align: center;
+      font-size: 10rem;
+    }*/
+
+		.wrapper {
+			max-width: 1000px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		p {
+			font-size: 2rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!--
+    <div class="screen">1</div>
+		<div class="screen">2</div>
+		-->
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Recusandae, maxime aut! Quaerat, excepturi in.
+			Veritatis ratione reprehenderit amet aperiam nam modi mollitia
+			perferendis numquam ex saepe fugit inventore voluptates excepturi,
+			atque esse corporis vero consectetur! Pariatur iure molestias porro,
+			ullam magni impedit optio dolor. Qui officia corrupti dolore,
+			assumenda vel commodi quos quae impedit ipsam possimus iure consectetur
+			inventore expedita quisquam fugit voluptatum eos vero porro aliquid esse nemo?
+			Blanditiis labore provident, hic magnam fugiat nobis reprehenderit pariatur!
+			Qui eveniet magni itaque quod laboriosam dignissimos numquam ea
+			quibusdam perspiciatis quae laborum modi facilis sequi
+			at assumenda dolore, voluptate nobis aliquam.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Recusandae, maxime aut! Quaerat, excepturi in.
+			Veritatis ratione reprehenderit amet aperiam nam modi mollitia
+			perferendis numquam ex saepe fugit inventore voluptates excepturi,
+			atque esse corporis vero consectetur! Pariatur iure molestias porro,
+			ullam magni impedit optio dolor. Qui officia corrupti dolore,
+			assumenda vel commodi quos quae impedit ipsam possimus iure consectetur
+			inventore expedita quisquam fugit voluptatum eos vero porro aliquid esse nemo?
+			Blanditiis labore provident, hic magnam fugiat nobis reprehenderit pariatur!
+			Qui eveniet magni itaque quod laboriosam dignissimos numquam ea
+			quibusdam perspiciatis quae laborum modi facilis sequi
+			at assumenda dolore, voluptate nobis aliquam.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Recusandae, maxime aut! Quaerat, excepturi in.
+			Veritatis ratione reprehenderit amet aperiam nam modi mollitia
+			perferendis numquam ex saepe fugit inventore voluptates excepturi,
+			atque esse corporis vero consectetur! Pariatur iure molestias porro,
+			ullam magni impedit optio dolor. Qui officia corrupti dolore,
+			assumenda vel commodi quos quae impedit ipsam possimus iure consectetur
+			inventore expedita quisquam fugit voluptatum eos vero porro aliquid esse nemo?
+			Blanditiis labore provident, hic magnam fugiat nobis reprehenderit pariatur!
+			Qui eveniet magni itaque quod laboriosam dignissimos numquam ea
+			quibusdam perspiciatis quae laborum modi facilis sequi
+			at assumenda dolore, voluptate nobis aliquam.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Recusandae, maxime aut! Quaerat, excepturi in.
+			Veritatis ratione reprehenderit amet aperiam nam modi mollitia
+			perferendis numquam ex saepe fugit inventore voluptates excepturi,
+			atque esse corporis vero consectetur! Pariatur iure molestias porro,
+			ullam magni impedit optio dolor. Qui officia corrupti dolore,
+			assumenda vel commodi quos quae impedit ipsam possimus iure consectetur
+			inventore expedita quisquam fugit voluptatum eos vero porro aliquid esse nemo?
+			Blanditiis labore provident, hic magnam fugiat nobis reprehenderit pariatur!
+			Qui eveniet magni itaque quod laboriosam dignissimos numquam ea
+			quibusdam perspiciatis quae laborum modi facilis sequi
+			at assumenda dolore, voluptate nobis aliquam.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			Recusandae, maxime aut! Quaerat, excepturi in.
+			Veritatis ratione reprehenderit amet aperiam nam modi mollitia
+			perferendis numquam ex saepe fugit inventore voluptates excepturi,
+			atque esse corporis vero consectetur! Pariatur iure molestias porro,
+			ullam magni impedit optio dolor. Qui officia corrupti dolore,
+			assumenda vel commodi quos quae impedit ipsam possimus iure consectetur
+			inventore expedita quisquam fugit voluptatum eos vero porro aliquid esse nemo?
+			Blanditiis labore provident, hic magnam fugiat nobis reprehenderit pariatur!
+			Qui eveniet magni itaque quod laboriosam dignissimos numquam ea
+			quibusdam perspiciatis quae laborum modi facilis sequi
+			at assumenda dolore, voluptate nobis aliquam.</p>
+	</div>
+
+	<script src="vendors/jquery.min.js"></script>
+	<script src="vendors/jquery.scrollpoint.min.js"></script>
+	<script src="dist/jquery.parallax-fx.js"></script>
+
+	<script>
+		$('.wrapper').scrollpoint({
+			enter() {
+				$(this).parallaxFx();
+			},
+
+			stay(data) {
+				$(this).parallaxFx(data.scrollDelta);
+			},
+
+			exit() {
+				$(this).parallaxFx('reset');
+			}
+		});
+
+		// HACK: To invoke the enter event immediately if a scrollpoint is inside the viewport
+		$(window).on('load', e => $(e.currentTarget).trigger('resize'));
+	</script>
+</body>
+
+</html>

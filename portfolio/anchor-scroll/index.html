@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnchorScroll</title>
+
+  <style>
+    .screen {
+      height: 125vh;
+      background-color: #ddd;
+      border: 1px solid #333;
+      text-align: center;
+      font-size: 10rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id="screen01" class="screen">
+      <a href="#screen03">01</a>
+    </div>
+
+    <div class="screen">02</div>
+
+    <div id="screen03" class="screen">
+      <a href="#screen01">03</a>
+    </div>
+  </div>
+
+  <script src="vendors/jquery.min.js"></script>
+  <script src="dist/jquery.anchor-scroll.js"></script>
+
+  <script>
+    $('a').click(e => {
+      e.preventDefault();
+      const target = $(e.currentTarget).attr('href');
+      
+      $.anchorScroll({ 
+        target,
+
+        complete() {
+          console.log('Hi!')
+        },
+      });
+    });
+  </script>
+</body>
+
+</html>
